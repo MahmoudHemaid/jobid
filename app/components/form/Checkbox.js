@@ -43,7 +43,6 @@ export default function CheckBox(props) {
     size,
     titleSize
   } = props;
-  console.log("==size==", iconSize);
 
   return (
     <TouchableOpacity
