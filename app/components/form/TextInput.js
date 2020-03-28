@@ -23,13 +23,12 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   error: {
-    color: Colors.danger,
-    marginBottom: Layout.margin.tiny,
     marginHorizontal: "10%"
   },
   input: {
     flex: 1,
-    padding: Layout.padding.normal
+    padding: Layout.padding.normal,
+    color: Colors.secondaryBlack
   }
 });
 
@@ -47,14 +46,17 @@ function FormTextInput(props) {
     Icon,
     iconSize,
     errorMessage,
-    inputRef
+    inputRef,
+    showBottomBar = false
   } = props;
 
   return (
     <View style={[styles.container, containerStyle]}>
-      <StyledText style={[styles.error]}>{errorMessage || " "}</StyledText>
+      <StyledText style={[Styles.text.error, styles.error]}>
+        {errorMessage || " "}
+      </StyledText>
       <View style={[styles.inputContainer, inputContainerStyle]}>
-        <Icon width={iconSize} height={iconSize} />
+        {Icon && <Icon width={iconSize} height={iconSize} />}
         <TextInput
           {...props}
           ref={inputRef}
@@ -74,7 +76,7 @@ export function NameTextInput(props) {
       autoCapitalize="words"
       autoCompleteType="name"
       textContentType="name"
-      input_type={INPUT_TYPE.password}
+      input_type={INPUT_TYPE.name}
       Icon={PersonIcon}
       {...props}
     />
@@ -87,7 +89,7 @@ export function EmailTextInput(props) {
       autoCompleteType="email"
       textContentType="emailAddress"
       keyboardType="email-address"
-      input_type={INPUT_TYPE.password}
+      input_type={INPUT_TYPE.email}
       Icon={EmailIcon}
       {...props}
     />
@@ -108,15 +110,11 @@ export function PasswordTextInput(props) {
 }
 const propTypes = {
   containerStyle: ViewPropTypes.style,
-  inputContainerStyle: ViewPropTypes.style,
-  style: ViewPropTypes.style,
   iconSize: PropTypes.number,
   errorMessage: PropTypes.string
 };
 const defaultProps = {
   containerStyle: {},
-  inputContainerStyle: {},
-  style: {},
   iconSize: 18,
   errorMessage: " "
 };
