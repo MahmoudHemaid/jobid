@@ -1,12 +1,12 @@
 import React, { useCallback } from "react";
 import { Image, StyleSheet, View } from "react-native";
-import TextButton from "../components/TextButton";
-import { Colors, Layout, Fonts } from "../constants";
-import logo from "../assets/images/logo_jobid_blue.png";
-import StyledText from "../components/StyledText";
-import { GoogleButton, FacebookButton } from "../components/SocialButtons";
-import { SCREEN_KEYS } from "../utilities/Constants";
-import Screen from "./Screen";
+import TextButton from "../../components/buttons/TextButton";
+import { Colors, Layout, Fonts } from "../../constants";
+import logo from "../../assets/images/logo_jobid_blue.png";
+import StyledText from "../../components/StyledText";
+import { GoogleButton, FacebookButton } from "../../components/buttons/SocialButtons";
+import { SCREEN_KEYS } from "../../utilities/Constants";
+import Screen from "../Screen";
 
 export default function GetSartedScreen(props) {
   const onFacebookPress = useCallback(() => {

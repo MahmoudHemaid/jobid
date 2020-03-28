@@ -1,4 +1,4 @@
-import CreateAccountScreen from "./CreateAccountScreen";
-import GetStartedScreen from "./GetStartedScreen";
+import CreateAccountScreen from "./auth/CreateAccountScreen";
+import GetStartedScreen from "./auth/GetStartedScreen";
 
 export { CreateAccountScreen, GetStartedScreen };

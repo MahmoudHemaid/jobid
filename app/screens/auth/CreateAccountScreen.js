@@ -1,16 +1,16 @@
 import React, { useRef, useCallback, useEffect, useState } from "react";
 import { StyleSheet, View, Keyboard, Platform } from "react-native";
-import StyledText from "../components/StyledText";
-import { Colors, Layout } from "../constants";
-import Screen from "./Screen";
+import StyledText from "../../components/StyledText";
+import { Colors, Layout } from "../../constants";
+import Screen from "../Screen";
 import {
   ProfileImagePicker,
   PasswordTextInput,
   EmailTextInput,
   NameTextInput
-} from "../components/form";
+} from "../../components/form";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
-import TextButton from "../components/TextButton";
+import TextButton from "../../components/buttons/TextButton";
 import KeyboardSpacer from "react-native-keyboard-spacer";
 
 export default function CreateAccountScreen() {
