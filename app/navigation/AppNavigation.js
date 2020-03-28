@@ -4,7 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { SCREEN_KEYS } from "../utilities/Constants";
 import styles from "./styles/NavigationStyles";
 // eslint-disable-next-line no-unused-vars
-import { GetStartedScreen, CreateAccountScreen } from "../screens";
+import { GetStartedScreen, CreateAccountScreen, LogInScreen } from "../screens";
 
 const AuthStack = createStackNavigator();
 
@@ -21,6 +21,7 @@ const AuthStackCreen = () => (
       name={SCREEN_KEYS.CREATE_ACCOUNT}
       component={CreateAccountScreen}
     />
+    <AuthStack.Screen name={SCREEN_KEYS.LOG_IN} component={LogInScreen} />
   </AuthStack.Navigator>
 );
 

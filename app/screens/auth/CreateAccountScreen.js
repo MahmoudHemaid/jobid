@@ -3,6 +3,8 @@ import { StyleSheet, View, Keyboard, Platform } from "react-native";
 import StyledText from "../../components/StyledText";
 import { Colors, Layout } from "../../constants";
 import Screen from "../Screen";
+import { SCREEN_KEYS } from "../../utilities/Constants";
+
 import {
   ProfileImagePicker,
   PasswordTextInput,
@@ -13,7 +15,7 @@ import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import TextButton from "../../components/buttons/TextButton";
 import KeyboardSpacer from "react-native-keyboard-spacer";
 
-export default function CreateAccountScreen() {
+export default function CreateAccountScreen(props) {
   const [isKeyboardShowing, setKeyboardShowing] = useState(false);
   const scrollRef = useRef(null);
   const nameRef = useRef(null);
@@ -27,7 +29,7 @@ export default function CreateAccountScreen() {
   }, []);
   const onLogInPress = useCallback(() => {
     Keyboard.dismiss();
-    __DEV__ && console.log("TODO: Login button pressed");
+    props.navigation.navigate(SCREEN_KEYS.LOG_IN);
   }, []);
 
   const toggleFocus = useCallback(() => {

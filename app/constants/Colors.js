@@ -1,10 +1,12 @@
 const tintColor = "#2b2f43";
-
+const lightColor = "#969696";
 export default {
   primaryColor: "#2b2f43",
   secondaryColor: "#45B0BB",
-  textColor: "#716f81",
-  iconColor: "#716f81",
+  lightColor,
+  rgbaLightColor: "rgba(150,150,150, 0.2)",
+  textColor: lightColor,
+  iconColor: lightColor,
   tintColor,
   tabIconDefault: "#ccc",
   tabIconSelected: tintColor,

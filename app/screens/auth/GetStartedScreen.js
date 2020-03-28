@@ -4,7 +4,10 @@ import TextButton from "../../components/buttons/TextButton";
 import { Colors, Layout, Fonts } from "../../constants";
 import logo from "../../assets/images/logo_jobid_blue.png";
 import StyledText from "../../components/StyledText";
-import { GoogleButton, FacebookButton } from "../../components/buttons/SocialButtons";
+import {
+  GoogleButton,
+  FacebookButton
+} from "../../components/buttons/SocialButtons";
 import { SCREEN_KEYS } from "../../utilities/Constants";
 import Screen from "../Screen";
 
@@ -22,7 +25,7 @@ export default function GetSartedScreen(props) {
   }, []);
 
   const onLogInPress = useCallback(() => {
-    __DEV__ && console.log("TODO: Log in button pressed");
+    props.navigation.navigate(SCREEN_KEYS.LOG_IN);
   }, []);
 
   return (
