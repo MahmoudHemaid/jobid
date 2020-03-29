@@ -21,7 +21,6 @@ export default function StyledText(props) {
     return <TextComponent {...props} />;
   }
   const { containerProps, containerStyle } = props;
-  console.log(props);
 
   return (
     <TouchableOpacity {...containerProps} style={containerStyle}>
