@@ -36,7 +36,8 @@ StyledText.propTypes = {
   color: PropTypes.string,
   containerProps: PropTypes.object,
   touchable: PropTypes.oneOf([true, false, undefined]),
-  containerStyle: ViewPropTypes.style
+  containerStyle: ViewPropTypes.style,
+  children: PropTypes.string
 };
 
 StyledText.defaultProps = {
@@ -45,5 +46,6 @@ StyledText.defaultProps = {
   color: Colors.black,
   containerProps: {},
   touchable: false,
-  containerStyle: {}
+  containerStyle: {},
+  children: ""
 };

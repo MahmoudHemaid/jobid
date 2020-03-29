@@ -11,7 +11,7 @@ import {
   EmailTextInput,
   NameTextInput
 } from "../../components/form";
-import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
+import { ScrollView } from "react-native-gesture-handler";
 import TextButton from "../../components/buttons/TextButton";
 import KeyboardSpacer from "react-native-keyboard-spacer";
 
@@ -95,11 +95,14 @@ export default function CreateAccountScreen(props) {
         </TextButton>
         <View style={styles.loginContainer}>
           <StyledText color={Colors.textColor}>Already onboard?</StyledText>
-          <TouchableOpacity style={styles.loginButton} onPress={onLogInPress}>
-            <StyledText bold color={Colors.primaryColor}>
-              Log in
-            </StyledText>
-          </TouchableOpacity>
+          <StyledText
+            bold
+            touchable
+            color={Colors.primaryColor}
+            containerStyle={styles.loginButton}
+            onPress={onLogInPress}
+            children={"Log in"}
+          />
         </View>
 
         {/* The view that will animate to match the keyboards height */}
