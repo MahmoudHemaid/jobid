@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   container: {},
   inputContainer: {
     ...Styles.shadow.small,
-    width: "80%",
+    width: Layout.window.content,
     alignSelf: "center",
     justifyContent: "center",
     alignItems: "center",
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   error: {
-    marginHorizontal: "10%"
+    marginHorizontal: Layout.margin.content
   },
   input: {
     flex: 1,

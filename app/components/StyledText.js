@@ -1,32 +1,49 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, ViewPropTypes, TouchableOpacity } from "react-native";
 import { Fonts, Colors } from "../constants";
 import PropTypes from "prop-types";
 
+const TextComponent = props => (
+  <Text
+    {...props}
+    style={[
+      {
+        fontFamily: props.bold ? Fonts.bold : Fonts.regular,
+        fontSize: props.size,
+        color: props.color
+      },
+      props.style
+    ]}
+  />
+);
 export default function StyledText(props) {
+  if (!props.touchable) {
+    return <TextComponent {...props} />;
+  }
+  const { containerProps, containerStyle } = props;
+  console.log(props);
+
   return (
-    <Text
-      {...props}
-      style={[
-        {
-          fontFamily: props.bold ? Fonts.bold : Fonts.regular,
-          fontSize: props.size,
-          color: props.color
-        },
-        props.style
-      ]}
-    />
+    <TouchableOpacity {...containerProps} style={containerStyle}>
+      <TextComponent {...props} />
+    </TouchableOpacity>
   );
 }
 
 StyledText.propTypes = {
   bold: PropTypes.oneOf([true, false, undefined]),
   size: PropTypes.number,
-  color: PropTypes.string
+  color: PropTypes.string,
+  containerProps: PropTypes.object,
+  touchable: PropTypes.oneOf([true, false, undefined]),
+  containerStyle: ViewPropTypes.style
 };
 
 StyledText.defaultProps = {
   bold: false,
   size: Fonts.size.regular,
-  color: Colors.black
+  color: Colors.black,
+  containerProps: {},
+  touchable: false,
+  containerStyle: {}
 };

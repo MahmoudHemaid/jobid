@@ -1,11 +1,5 @@
 import React, { useCallback, useState, useRef } from "react";
-import {
-  Image,
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  Keyboard
-} from "react-native";
+import { Image, StyleSheet, View, Keyboard } from "react-native";
 import TextButton from "../../components/buttons/TextButton";
 import { Colors, Layout, Fonts, Styles } from "../../constants";
 import logo from "../../assets/images/logo_jobid_blue.png";
@@ -16,11 +10,6 @@ import { PasswordTextInput, EmailTextInput } from "../../components/form";
 import color_line from "../../assets/images/color_line.png";
 import Checkbox from "../../components/form/Checkbox";
 
-<Image
-  resizeMode={"cover"}
-  source={color_line}
-  style={{ width: "80%", height: 4 }}
-/>;
 export default function LogInScreen(props) {
   let [errorMessage, setErrorMessage] = useState();
   let [emailFocused, setEmailFocused] = useState(false);
@@ -96,14 +85,14 @@ export default function LogInScreen(props) {
           style={[styles.coloredLine, { opacity: passwordFocused ? 1 : 0.2 }]}
         />
         <View style={styles.formFooter}>
-          <TouchableOpacity
-            style={{ alignSelf: "flex-end" }}
+          <StyledText
+            touchable
+            color={Colors.textColor}
+            size={Fonts.size.medium}
+            containerStyle={{ alignSelf: "flex-end" }}
             onPress={onForgotPress}
-          >
-            <StyledText color={Colors.textColor} size={Fonts.size.medium}>
-              Forgot password?
-            </StyledText>
-          </TouchableOpacity>
+            children={"Forgot password?"}
+          />
           <Checkbox
             checked={rememberMe}
             title={"Remember me"}
@@ -118,14 +107,14 @@ export default function LogInScreen(props) {
         </TextButton>
         <View style={styles.createContainer}>
           <StyledText color={Colors.textColor}>Not a member?</StyledText>
-          <TouchableOpacity
-            style={styles.createButton}
+          <StyledText
+            touchable
+            bold
+            color={Colors.primaryColor}
+            containerStyle={styles.createButton}
             onPress={onCreateAccountPress}
-          >
-            <StyledText bold color={Colors.primaryColor}>
-              Create account
-            </StyledText>
-          </TouchableOpacity>
+            children={"Create account"}
+          />
         </View>
       </View>
     </Screen>
@@ -169,13 +158,13 @@ const styles = StyleSheet.create({
     fontSize: Fonts.size.regular
   },
   coloredLine: {
-    width: "80%",
+    width: Layout.window.content,
     height: 3,
     alignSelf: "center",
     backgroundColor: Colors.lightColor
   },
   formFooter: {
-    marginHorizontal: "10%",
+    marginHorizontal: Layout.margin.content,
     paddingVertical: Layout.padding.small
   }
 });

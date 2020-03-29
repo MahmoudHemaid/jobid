@@ -6,7 +6,7 @@ import { Colors, Layout, Fonts, Styles } from "../../constants";
 const styles = StyleSheet.create({
   button: {
     ...Styles.shadow.small,
-    width: "80%",
+    width: Layout.window.content,
     alignSelf: "center",
     justifyContent: "center",
     alignItems: "center",
