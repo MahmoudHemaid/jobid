@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useRef } from "react";
+import React, { useCallback, useState, useRef, useContext } from "react";
 import { Image, StyleSheet, View, Keyboard } from "react-native";
 import TextButton from "../../components/buttons/TextButton";
 import { Colors, Layout, Fonts, Styles } from "../../constants";
@@ -9,6 +9,7 @@ import Screen from "../Screen";
 import { PasswordTextInput, EmailTextInput } from "../../components/form";
 import color_line from "../../assets/images/color_line.png";
 import Checkbox from "../../components/form/Checkbox";
+import Context from "../../navigation/Context";
 
 export default function LogInScreen(props) {
   let [errorMessage, setErrorMessage] = useState();
@@ -17,6 +18,7 @@ export default function LogInScreen(props) {
   let [passwordFocused, setPasswordFocused] = useState(false);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
+  const { auth } = useContext(Context);
 
   const onCreateAccountPress = useCallback(() => {
     props.navigation.navigate(SCREEN_KEYS.CREATE_ACCOUNT);
@@ -44,6 +46,7 @@ export default function LogInScreen(props) {
 
   const onLogInPress = useCallback(() => {
     __DEV__ && console.log("TODO: Log in button pressed");
+    auth.logIn();
   }, []);
 
   return (

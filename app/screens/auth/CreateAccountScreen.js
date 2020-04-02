@@ -1,10 +1,15 @@
-import React, { useRef, useCallback, useEffect, useState } from "react";
+import React, {
+  useRef,
+  useCallback,
+  useEffect,
+  useState,
+  useContext
+} from "react";
 import { StyleSheet, View, Keyboard, Platform } from "react-native";
 import StyledText from "../../components/StyledText";
 import { Colors, Layout } from "../../constants";
 import Screen from "../Screen";
 import { SCREEN_KEYS } from "../../utilities/Constants";
-
 import {
   ProfileImagePicker,
   PasswordTextInput,
@@ -14,6 +19,7 @@ import {
 import { ScrollView } from "react-native-gesture-handler";
 import TextButton from "../../components/buttons/TextButton";
 import KeyboardSpacer from "react-native-keyboard-spacer";
+import Context from "../../navigation/Context";
 
 export default function CreateAccountScreen(props) {
   const [isKeyboardShowing, setKeyboardShowing] = useState(false);
@@ -22,10 +28,12 @@ export default function CreateAccountScreen(props) {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const cPasswordRef = useRef(null);
+  const { auth } = useContext(Context);
 
   const onSignUpPress = useCallback(() => {
     Keyboard.dismiss();
     __DEV__ && console.log("TODO: Signup button pressed");
+    auth.logIn();
   }, []);
   const onLogInPress = useCallback(() => {
     Keyboard.dismiss();
