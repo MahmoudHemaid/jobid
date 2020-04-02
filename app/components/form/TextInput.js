@@ -7,6 +7,7 @@ import { Colors, Layout, Fonts, Styles } from "../../constants";
 import PersonIcon from "../../assets/images/icon_person_outline.svg";
 import EmailIcon from "../../assets/images/icon_mail_outline.svg";
 import LockIcon from "../../assets/images/icon_lock_outline.svg";
+import SearchIcon from "../../assets/images/icon_search.svg";
 
 const styles = StyleSheet.create({
   container: {},
@@ -35,7 +36,8 @@ const styles = StyleSheet.create({
 export const INPUT_TYPE = {
   name: 0,
   email: 1,
-  password: 2
+  password: 2,
+  search: 3
 };
 
 function FormTextInput(props) {
@@ -46,8 +48,7 @@ function FormTextInput(props) {
     Icon,
     iconSize,
     errorMessage,
-    inputRef,
-    showBottomBar = false
+    inputRef
   } = props;
 
   return (
@@ -108,6 +109,17 @@ export function PasswordTextInput(props) {
     />
   );
 }
+
+export function SearchTextInput(props) {
+  return (
+    <FormTextInput
+      input_type={INPUT_TYPE.search}
+      placeholder={"Search"}
+      Icon={SearchIcon}
+      {...props}
+    />
+  );
+}
 const propTypes = {
   containerStyle: ViewPropTypes.style,
   iconSize: PropTypes.number,
@@ -125,3 +137,5 @@ EmailTextInput.propTypes = propTypes;
 EmailTextInput.defaultProps = defaultProps;
 PasswordTextInput.propTypes = propTypes;
 PasswordTextInput.defaultProps = defaultProps;
+SearchTextInput.propTypes = propTypes;
+SearchTextInput.defaultProps = defaultProps;
