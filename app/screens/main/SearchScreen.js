@@ -127,6 +127,6 @@ const styles = StyleSheet.create({
     overflow: Layout.isIOS ? "scroll" : "hidden",
     marginHorizontal: Layout.margin.content,
     marginVertical: Layout.padding.small,
-    paddingTop: Layout.isAndroid ? Layout.window.height * 0.2 : 0
+    paddingTop: Layout.isAndroid ? "20%" : 0
   }
 });
