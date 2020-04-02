@@ -6,7 +6,8 @@ const height = Dimensions.get("window").height;
 export default {
   window: {
     width,
-    height
+    height,
+    content: width * 0.8
   },
   isSmallDevice: width < 375,
   margin: {
@@ -16,7 +17,8 @@ export default {
     normal: 16,
     large: 24,
     xLarge: 36,
-    xxLarge: 76
+    xxLarge: 76,
+    content: width * 0.1
   },
   padding: {
     tiny: 4,
@@ -24,7 +26,8 @@ export default {
     medium: 12,
     normal: 16,
     large: 24,
-    xLarge: 36
+    xLarge: 36,
+    content: width * 0.1
   },
   radius: {
     tiny: 2,
@@ -33,6 +36,7 @@ export default {
     normal: 5,
     large: 8,
     xLarge: 12,
+    tabBar: 24,
     round: 50
   },
   horizontalLineHeight: 1,

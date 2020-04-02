@@ -1,9 +1,9 @@
 import React from "react";
 import { ViewPropTypes, StyleSheet, TouchableOpacity } from "react-native";
 import PropTypes from "prop-types";
-import { Colors, Layout, Styles } from "../constants";
-import GoogleIcon from "../assets/images/logo_google.svg";
-import FacebookIcon from "../assets/images/logo_facebook.svg";
+import { Colors, Layout, Styles } from "../../constants";
+import GoogleIcon from "../../assets/images/logo_google.svg";
+import FacebookIcon from "../../assets/images/logo_facebook.svg";
 
 const styles = StyleSheet.create({
   button: {

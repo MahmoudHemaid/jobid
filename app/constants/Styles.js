@@ -1,3 +1,5 @@
+import { Colors, Layout } from "./index";
+
 const shadow = {
   tiny: {
     shadowColor: "#000",
@@ -60,4 +62,10 @@ const shadow = {
     elevation: 12
   }
 };
-export default { shadow };
+const text = {
+  error: {
+    color: Colors.danger,
+    marginBottom: Layout.margin.tiny
+  }
+};
+export default { shadow, text };

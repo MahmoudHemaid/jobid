@@ -1,12 +1,12 @@
 import React from "react";
 import { ViewPropTypes, StyleSheet, TouchableOpacity } from "react-native";
-import StyledText from "./StyledText";
+import StyledText from "../StyledText";
 import PropTypes from "prop-types";
-import { Colors, Layout, Fonts, Styles } from "../constants";
+import { Colors, Layout, Fonts, Styles } from "../../constants";
 const styles = StyleSheet.create({
   button: {
     ...Styles.shadow.small,
-    width: "80%",
+    width: Layout.window.content,
     alignSelf: "center",
     justifyContent: "center",
     alignItems: "center",

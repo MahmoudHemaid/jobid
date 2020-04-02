@@ -7,12 +7,13 @@ import { Colors, Layout, Fonts, Styles } from "../../constants";
 import PersonIcon from "../../assets/images/icon_person_outline.svg";
 import EmailIcon from "../../assets/images/icon_mail_outline.svg";
 import LockIcon from "../../assets/images/icon_lock_outline.svg";
+import SearchIcon from "../../assets/images/icon_search.svg";
 
 const styles = StyleSheet.create({
   container: {},
   inputContainer: {
     ...Styles.shadow.small,
-    width: "80%",
+    width: Layout.window.content,
     alignSelf: "center",
     justifyContent: "center",
     alignItems: "center",
@@ -23,20 +24,20 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   error: {
-    color: Colors.danger,
-    marginBottom: Layout.margin.tiny,
-    marginHorizontal: "10%"
+    marginHorizontal: Layout.margin.content
   },
   input: {
     flex: 1,
-    padding: Layout.padding.normal
+    padding: Layout.padding.normal,
+    color: Colors.secondaryBlack
   }
 });
 
 export const INPUT_TYPE = {
   name: 0,
   email: 1,
-  password: 2
+  password: 2,
+  search: 3
 };
 
 function FormTextInput(props) {
@@ -52,9 +53,11 @@ function FormTextInput(props) {
 
   return (
     <View style={[styles.container, containerStyle]}>
-      <StyledText style={[styles.error]}>{errorMessage || " "}</StyledText>
+      <StyledText style={[Styles.text.error, styles.error]}>
+        {errorMessage || " "}
+      </StyledText>
       <View style={[styles.inputContainer, inputContainerStyle]}>
-        <Icon width={iconSize} height={iconSize} />
+        {Icon && <Icon width={iconSize} height={iconSize} />}
         <TextInput
           {...props}
           ref={inputRef}
@@ -74,7 +77,7 @@ export function NameTextInput(props) {
       autoCapitalize="words"
       autoCompleteType="name"
       textContentType="name"
-      input_type={INPUT_TYPE.password}
+      input_type={INPUT_TYPE.name}
       Icon={PersonIcon}
       {...props}
     />
@@ -87,7 +90,7 @@ export function EmailTextInput(props) {
       autoCompleteType="email"
       textContentType="emailAddress"
       keyboardType="email-address"
-      input_type={INPUT_TYPE.password}
+      input_type={INPUT_TYPE.email}
       Icon={EmailIcon}
       {...props}
     />
@@ -106,17 +109,24 @@ export function PasswordTextInput(props) {
     />
   );
 }
+
+export function SearchTextInput(props) {
+  return (
+    <FormTextInput
+      input_type={INPUT_TYPE.search}
+      placeholder={"Search"}
+      Icon={SearchIcon}
+      {...props}
+    />
+  );
+}
 const propTypes = {
   containerStyle: ViewPropTypes.style,
-  inputContainerStyle: ViewPropTypes.style,
-  style: ViewPropTypes.style,
   iconSize: PropTypes.number,
   errorMessage: PropTypes.string
 };
 const defaultProps = {
   containerStyle: {},
-  inputContainerStyle: {},
-  style: {},
   iconSize: 18,
   errorMessage: " "
 };
@@ -127,3 +137,5 @@ EmailTextInput.propTypes = propTypes;
 EmailTextInput.defaultProps = defaultProps;
 PasswordTextInput.propTypes = propTypes;
 PasswordTextInput.defaultProps = defaultProps;
+SearchTextInput.propTypes = propTypes;
+SearchTextInput.defaultProps = defaultProps;
