@@ -36,6 +36,7 @@ export default {
     normal: 5,
     large: 8,
     xLarge: 12,
+    tabBar: 24,
     round: 50
   },
   horizontalLineHeight: 1,
