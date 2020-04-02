@@ -51,8 +51,10 @@ export default function SearchScreen(props) {
       <Screen containerStyle={{ backgroundColor: Colors.primaryColor }}>
         <KeyboardAvoidingView
           style={{ flex: 1 }}
-          behavior="padding"
-          keyboardVerticalOffset={insets.bottom}
+          behavior={Layout.isIOS ? "padding" : "height"}
+          keyboardVerticalOffset={
+            Layout.isIOS ? insets.bottom : insets.bottom + 46
+          }
         >
           <View style={styles.topSection}>
             <HeaderView
@@ -122,8 +124,9 @@ const styles = StyleSheet.create({
   subcategoriesSection: {
     flex: 0.6,
     justifyContent: "center",
-    overflow: "scroll",
+    overflow: Layout.isIOS ? "scroll" : "hidden",
     marginHorizontal: Layout.margin.content,
-    marginVertical: Layout.padding.small
+    marginVertical: Layout.padding.small,
+    paddingTop: Layout.isAndroid ? Layout.window.height * 0.2 : 0
   }
 });
