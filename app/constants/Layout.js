@@ -1,4 +1,4 @@
-import { Dimensions } from "react-native";
+import { Dimensions, Platform } from "react-native";
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
@@ -10,6 +10,8 @@ export default {
     content: width * 0.8
   },
   isSmallDevice: width < 375,
+  isIOS: Platform.OS == "ios",
+  isAndroid: Platform.OS == "android",
   margin: {
     tiny: 4,
     small: 8,
