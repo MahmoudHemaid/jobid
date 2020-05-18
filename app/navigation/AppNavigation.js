@@ -12,7 +12,7 @@ import {
   CreateAccountScreen,
   LogInScreen,
   SelectActionScreen,
-  SearchScreen
+  SearchScreen,
 } from "../screens";
 
 const AuthStack = createStackNavigator();
@@ -63,7 +63,7 @@ const RootStackScreen = ({ isLogged }) => (
 );
 
 export default () => {
-  const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] = useState(true);
   const context = useMemo(() => {
     return {
       auth: {
@@ -72,8 +72,8 @@ export default () => {
         },
         logOut: () => {
           setIsLogged(false);
-        }
-      }
+        },
+      },
     };
   }, []);
   return (
