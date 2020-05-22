@@ -63,7 +63,7 @@ const RootStackScreen = ({ isLogged }) => (
 );
 
 export default () => {
-  const [isLogged, setIsLogged] = useState(true);
+  const [isLogged, setIsLogged] = useState(false);
   const context = useMemo(() => {
     return {
       auth: {

@@ -1,7 +1,13 @@
 import React, { useEffect, useMemo } from "react";
-import { View, StyleSheet, ViewPropTypes } from "react-native";
+import {
+  View,
+  StyleSheet,
+  ViewPropTypes,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from "react-native";
 import PropTypes from "prop-types";
-import { Marker } from "react-native-maps";
+import { Marker, Callout } from "react-native-maps";
 import { Layout, Colors } from "../../constants";
 import { FontAwesome } from "@expo/vector-icons";
 
@@ -40,7 +46,7 @@ const getStyles = (size) =>
   });
 
 export default CustomMarker = (props) => {
-  const { zoomLevel = 2 } = props;
+  const { zoomLevel = 2, coordinate, onPress } = props;
   const ref = React.useRef(null);
   useEffect(() => {
     ref.current.redraw();
@@ -54,13 +60,11 @@ export default CustomMarker = (props) => {
   return (
     <Marker
       ref={ref}
-      coordinate={{
-        latitude: Layout.isAndroid ? 31.5148834 : 37.785834,
-        longitude: Layout.isAndroid ? 34.4518187 : -122.406417,
-      }}
+      coordinate={coordinate}
       tracksViewChanges={false}
       anchor={{ x: 0.5, y: 0.5 }}
     >
+      {/** Square container to fix outer circle croping when zooming */}
       <View style={styles.container}>
         <View style={styles.outerCircle}>
           <View style={styles.innerCircle}>

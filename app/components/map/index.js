@@ -1,5 +1,11 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
-import { View, StyleSheet, ViewPropTypes, Alert } from "react-native";
+import {
+  View,
+  StyleSheet,
+  ViewPropTypes,
+  Alert,
+  TouchableWithoutFeedback,
+} from "react-native";
 import PropTypes from "prop-types";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import MapStyle from "./MapStyle.json";
@@ -49,12 +55,14 @@ export default function Map(props) {
 
       //   ref.current.setCamera(camera);
 
-      // ref.current.animateToRegion({
-      //   latitude,
-      //   longitude,
-      //   latitudeDelta: LATITUDE_DELTA,
-      //   longitudeDelta: LONGITUDE_DELTA,
-      // });
+      ref.current.animateToRegion({
+        // latitude,
+        // longitude,
+        latitude: 37.785834,
+        longitude: -122.406417,
+        latitudeDelta: LATITUDE_DELTA,
+        longitudeDelta: LONGITUDE_DELTA,
+      });
       setLocation(location);
     })();
   }, []);
@@ -91,7 +99,14 @@ export default function Map(props) {
         {...props}
         onRegionChange={onRegionChange}
       >
-        <CustomMarker zoomLevel={zoomLevel} />
+        <CustomMarker
+          zoomLevel={zoomLevel}
+          onPress={props.onMarkerPress}
+          coordinate={{
+            latitude: 37.785834,
+            longitude: -122.406417,
+          }}
+        />
       </MapView>
     </View>
   );
