@@ -10,20 +10,11 @@ export default {
   subColor: "#7EF2FC",
   categoryColor: "#5f5d70",
   lightColor,
+  orange: "#FFAC0A",
   rgbaLightColor: "rgba(0,0,0, 0.4)",
   textColor: lightColor,
   iconColor: lightColor,
   tintColor,
-  tabIconDefault: "#ccc",
-  tabIconSelected: tintColor,
-  tabBar: "#fefefe",
-  errorBackground: "red",
-  errorText: "#fff",
-  warningBackground: "#EAEB5E",
-  warningText: "#666804",
-  noticeBackground: tintColor,
-  noticeText: "#fff",
-  statusBarColor: "#1c1c1c",
 
   input: "#f1f1f1",
   searchInput: "#3A3D52",
@@ -41,5 +32,5 @@ export default {
   error: "rgba(200, 0, 0, 0.8)",
 
   facebook: "#3b5998",
-  google: "#FFFFFF"
+  google: "#FFFFFF",
 };

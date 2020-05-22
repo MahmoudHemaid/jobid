@@ -17,11 +17,14 @@ export default function SearchScreen(props) {
 
   const onNextPress = useCallback(() => {
     const selectedArray = Array.from(selected);
+    props.navigation.navigate(SCREEN_KEYS.MAIN_STACK, {
+      screen: SCREEN_KEYS.MAP,
+    });
     __DEV__ && console.log("TODO: Next button pressed");
   }, []);
 
   const onPress = useCallback(
-    item => {
+    (item) => {
       let itemArray = [item];
       if (item.toLowerCase() == "all") {
         // If all selected will clear all selected
@@ -63,10 +66,10 @@ export default function SearchScreen(props) {
             />
             <SearchTextInput
               inputContainerStyle={{
-                backgroundColor: Colors.searchInput
+                backgroundColor: Colors.searchInput,
               }}
               style={{
-                color: Colors.white
+                color: Colors.white,
               }}
               onSubmitEditing={Keyboard.dismiss}
             />
@@ -78,7 +81,7 @@ export default function SearchScreen(props) {
                 item={"ALL"}
                 onPress={onPress}
               />
-              {subcategories.map(item => (
+              {subcategories.map((item) => (
                 <SubCategoryButton
                   key={item}
                   isSelected={selected.has(item)}
@@ -105,21 +108,21 @@ export default function SearchScreen(props) {
 const styles = StyleSheet.create({
   topSection: {
     flex: 0.2,
-    justifyContent: "space-between"
+    justifyContent: "space-between",
   },
   logo: {
-    alignSelf: "center"
+    alignSelf: "center",
   },
   logoSection: {
     flex: 0.5,
-    justifyContent: "center"
+    justifyContent: "center",
   },
   bottomSection: {
     flex: 0.2,
-    justifyContent: "center"
+    justifyContent: "center",
   },
   button: {
-    marginVertical: Layout.padding.normal
+    marginVertical: Layout.padding.normal,
   },
   subcategoriesSection: {
     flex: 0.6,
@@ -127,6 +130,6 @@ const styles = StyleSheet.create({
     overflow: Layout.isIOS ? "scroll" : "hidden",
     marginHorizontal: Layout.margin.content,
     marginVertical: Layout.padding.small,
-    paddingTop: Layout.isAndroid ? "20%" : 0
-  }
+    paddingTop: Layout.isAndroid ? "20%" : 0,
+  },
 });

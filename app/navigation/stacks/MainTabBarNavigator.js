@@ -6,11 +6,11 @@ import {
   MessagesIcon,
   ProfileIcon,
   WalletIcon,
-  BidsIcon
+  BidsIcon,
 } from "../../components/icons/TabBarIcons";
 import styles from "../styles/NavigationStyles";
 import CategoriesBarButton from "../../components/buttons/CategoriesBarButton";
-import { Screen, CategoriesScreen } from "../../screens";
+import { Screen, CategoriesScreen, MapScreen } from "../../screens";
 
 const TabNavigator = createBottomTabNavigator();
 export default MainTabBarNavigator = () => (
@@ -19,42 +19,49 @@ export default MainTabBarNavigator = () => (
     tabBarOptions={{
       style: styles.tabBar,
       inactiveBackgroundColor: Colors.transparent,
-      activeTintColor: Colors.primaryColor
+      activeTintColor: Colors.primaryColor,
     }}
   >
+    <TabNavigator.Screen
+      name={SCREEN_KEYS.MAP}
+      component={MapScreen}
+      options={{
+        tabBarButton: () => null,
+      }}
+    />
     <TabNavigator.Screen
       name="PROFILE"
       component={Screen}
       options={{
-        tabBarIcon: ProfileIcon
+        tabBarIcon: ProfileIcon,
       }}
     />
     <TabNavigator.Screen
       name="WALLET"
       component={Screen}
       options={{
-        tabBarIcon: WalletIcon
+        tabBarIcon: WalletIcon,
       }}
     />
     <TabNavigator.Screen
       name={SCREEN_KEYS.CATEGORIES}
       component={CategoriesScreen}
       options={{
-        tabBarButton: props => <CategoriesBarButton {...props} />
+        tabBarButton: (props) => <CategoriesBarButton {...props} />,
       }}
     />
     <TabNavigator.Screen
       name={"MY BIDS"}
       component={Screen}
       options={{
-        tabBarIcon: BidsIcon
+        tabBarIcon: BidsIcon,
       }}
     />
     <TabNavigator.Screen
       name={"MESSAGES"}
       component={Screen}
       options={{
-        tabBarIcon: MessagesIcon
+        tabBarIcon: MessagesIcon,
       }}
     />
   </TabNavigator.Navigator>

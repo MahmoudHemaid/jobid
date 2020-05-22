@@ -12,7 +12,7 @@ import {
   CreateAccountScreen,
   LogInScreen,
   SelectActionScreen,
-  SearchScreen
+  SearchScreen,
 } from "../screens";
 
 const AuthStack = createStackNavigator();
@@ -72,8 +72,8 @@ export default () => {
         },
         logOut: () => {
           setIsLogged(false);
-        }
-      }
+        },
+      },
     };
   }, []);
   return (

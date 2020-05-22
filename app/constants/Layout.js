@@ -7,7 +7,7 @@ export default {
   window: {
     width,
     height,
-    content: width * 0.8
+    content: width * 0.8,
   },
   isSmallDevice: width < 375,
   isIOS: Platform.OS == "ios",
@@ -20,7 +20,7 @@ export default {
     large: 24,
     xLarge: 36,
     xxLarge: 76,
-    content: width * 0.1
+    content: width * 0.1,
   },
   padding: {
     tiny: 4,
@@ -29,7 +29,7 @@ export default {
     normal: 16,
     large: 24,
     xLarge: 36,
-    content: width * 0.1
+    content: width * 0.1,
   },
   radius: {
     tiny: 2,
@@ -38,13 +38,15 @@ export default {
     normal: 5,
     large: 8,
     xLarge: 12,
+    xxLarge: 18,
+    xxxLarge: 24,
     tabBar: 24,
-    round: 50
+    round: 50,
   },
   horizontalLineHeight: 1,
   screenWidth: width < height ? width : height,
   screenHeight: width < height ? height : width,
   navBarHeight: Platform.OS === "ios" ? 64 : 54,
   icons: {},
-  images: {}
+  images: {},
 };

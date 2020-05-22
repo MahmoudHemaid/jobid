@@ -7,6 +7,7 @@ import LogInScreen from "./auth/LogInScreen";
 import SelectActionScreen from "./main/SelectActionScreen";
 import CategoriesScreen from "./main/CategoriesScreen";
 import SearchScreen from "./main/SearchScreen";
+import MapScreen from "./main/MapScreen";
 
 export {
   Screen,
@@ -15,5 +16,6 @@ export {
   LogInScreen,
   SelectActionScreen,
   CategoriesScreen,
-  SearchScreen
+  SearchScreen,
+  MapScreen,
 };
