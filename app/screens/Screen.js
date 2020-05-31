@@ -4,6 +4,7 @@ import SafeAreaView from "react-native-safe-area-view";
 import { useSafeArea } from "react-native-safe-area-context";
 import { Colors } from "../constants";
 import PropTypes from "prop-types";
+import CirclesBackground from "../components/views/CirclesBackground";
 
 export default function Screen(props) {
   const insets = useSafeArea();
@@ -12,11 +13,17 @@ export default function Screen(props) {
       {...props.containerProps}
       style={[
         styles.container,
-        { paddingTop: insets.top },
-        props.containerStyle
+        {
+          backgroundColor: props.backgroundColor,
+        },
+        props.containerStyle,
       ]}
     >
-      <View {...props} style={[styles.contentContainer, props.style]}>
+      <View {...props} style={[styles.contentContainer, , props.style]}>
+        {props.circlesBackground && (
+          <CirclesBackground style={{ top: -insets.top }} />
+        )}
+
         {props.children}
       </View>
     </SafeAreaView>
@@ -26,21 +33,24 @@ export default function Screen(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.secondaryWhite
   },
   contentContainer: {
-    flex: 1
-  }
+    flex: 1,
+  },
 });
 
 Screen.propTypes = {
   containerProps: PropTypes.object,
   style: ViewPropTypes.style,
-  containerStyle: ViewPropTypes.style
+  containerStyle: ViewPropTypes.style,
+  circlesBackground: PropTypes.oneOf([undefined, true, false]),
+  backgroundColor: PropTypes.string,
 };
 
 Screen.defaultProps = {
   containerProps: {},
   style: {},
-  containerStyle: {}
+  containerStyle: {},
+  circlesBackground: false,
+  backgroundColor: Colors.secondaryWhite,
 };
