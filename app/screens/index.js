@@ -8,6 +8,8 @@ import SelectActionScreen from "./main/SelectActionScreen";
 import CategoriesScreen from "./main/CategoriesScreen";
 import SearchScreen from "./main/SearchScreen";
 import MapScreen from "./main/MapScreen";
+import JobDetailsScreen from "./main/JobDetailsScreen";
+import MakeOfferScreen from "./main/MakeOfferScreen";
 
 export {
   Screen,
@@ -18,4 +20,6 @@ export {
   CategoriesScreen,
   SearchScreen,
   MapScreen,
+  JobDetailsScreen,
+  MakeOfferScreen,
 };

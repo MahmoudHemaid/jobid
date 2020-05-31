@@ -13,6 +13,8 @@ import {
   LogInScreen,
   SelectActionScreen,
   SearchScreen,
+  JobDetailsScreen,
+  MakeOfferScreen,
 } from "../screens";
 
 const AuthStack = createStackNavigator();
@@ -46,8 +48,17 @@ const AppStackScreen = () => (
     <AppStack.Screen
       name={SCREEN_KEYS.MAIN_STACK}
       component={MainTabBarNavigator}
+      options={{ gestureEnabled: false }}
     />
     <AppStack.Screen name={SCREEN_KEYS.SEARCH} component={SearchScreen} />
+    <AppStack.Screen
+      name={SCREEN_KEYS.JOB_DETAILS}
+      component={JobDetailsScreen}
+    />
+    <AppStack.Screen
+      name={SCREEN_KEYS.MAKE_OFFER}
+      component={MakeOfferScreen}
+    />
   </AppStack.Navigator>
 );
 
