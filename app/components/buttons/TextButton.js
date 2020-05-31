@@ -11,11 +11,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: Layout.radius.round,
-    padding: Layout.padding.normal
+    padding: Layout.padding.normal,
   },
   buttonText: {
-    ...Fonts.style.h3
-  }
+    ...Fonts.style.h3,
+  },
 });
 
 export default function TextButton(props) {
@@ -39,7 +39,7 @@ TextButton.propTypes = {
   textProps: PropTypes.object,
   style: ViewPropTypes.style,
   color: PropTypes.string,
-  textColor: PropTypes.string
+  textColor: PropTypes.string,
 };
 
 TextButton.defaultProps = {
@@ -47,5 +47,5 @@ TextButton.defaultProps = {
   style: {},
   textStyle: {},
   color: Colors.primaryColor,
-  textColor: Colors.white
+  textColor: Colors.white,
 };
