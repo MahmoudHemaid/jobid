@@ -4,7 +4,7 @@ import TextButton from "../../components/buttons/TextButton";
 import { Colors, Layout, Fonts } from "../../constants";
 import logo from "../../assets/images/logo_jobid.png";
 import ColoredBar from "../../components/bars/ColoredBar";
-import { SCREEN_KEYS } from "../../utilities/Constants";
+import { SCREEN_KEYS, MAP_CARD } from "../../utilities/Constants";
 import Screen from "../Screen";
 
 export default function SelectActionScreen(props) {
@@ -18,7 +18,7 @@ export default function SelectActionScreen(props) {
 
   return (
     <View style={{ flex: 1 }}>
-      <Screen containerStyle={{ backgroundColor: Colors.primaryColor }}>
+      <Screen backgroundColor={Colors.primaryColor}>
         <View style={styles.logoSection}>
           <Image style={styles.logo} source={logo} />
         </View>
@@ -47,26 +47,26 @@ export default function SelectActionScreen(props) {
 
 const styles = StyleSheet.create({
   logo: {
-    alignSelf: "center"
+    alignSelf: "center",
   },
   logoSection: {
     flex: 0.5,
-    justifyContent: "center"
+    justifyContent: "center",
   },
   buttonsSection: {
-    justifyContent: "center"
+    justifyContent: "center",
   },
   getStartedText: {
     fontSize: Fonts.size.large,
     marginBottom: Layout.margin.large,
-    textAlign: "center"
+    textAlign: "center",
   },
   socialContainer: {
     flexDirection: "row",
     justifyContent: "space-evenly",
-    paddingHorizontal: Layout.padding.large
+    paddingHorizontal: Layout.padding.large,
   },
   button: {
-    marginVertical: Layout.padding.normal
-  }
+    marginVertical: Layout.padding.normal,
+  },
 });

@@ -27,6 +27,7 @@ export default MainTabBarNavigator = () => (
       component={MapScreen}
       options={{
         tabBarButton: () => null,
+        unmountOnBlur: true,
       }}
     />
     <TabNavigator.Screen

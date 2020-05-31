@@ -19,9 +19,13 @@ export default function SearchScreen(props) {
     const selectedArray = Array.from(selected);
     props.navigation.navigate(SCREEN_KEYS.MAIN_STACK, {
       screen: SCREEN_KEYS.MAP,
+      params: {
+        selected: selectedArray,
+        subcategories,
+      },
     });
     __DEV__ && console.log("TODO: Next button pressed");
-  }, []);
+  }, [selected]);
 
   const onPress = useCallback(
     (item) => {
@@ -51,7 +55,7 @@ export default function SearchScreen(props) {
 
   return (
     <View style={{ flex: 1 }}>
-      <Screen containerStyle={{ backgroundColor: Colors.primaryColor }}>
+      <Screen backgroundColor={Colors.primaryColor}>
         <KeyboardAvoidingView
           style={{ flex: 1 }}
           behavior={Layout.isIOS ? "padding" : "height"}

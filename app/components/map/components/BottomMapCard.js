@@ -1,16 +1,24 @@
 import React from "react";
 import { StyleSheet, View, TouchableOpacity } from "react-native";
-import { Colors, Layout, Fonts } from "../../constants";
-import { SCREEN_KEYS } from "../../utilities/Constants";
-import StyledText from "../StyledText";
-import HexagonImage from "../images/HexagonImage";
-import ClockIcon from "../../assets/images/map/icon_clock.svg";
+import { Colors, Layout, Fonts } from "../../../constants";
+import { SCREEN_KEYS } from "../../../utilities/Constants";
+import StyledText from "../../StyledText";
+import HexagonImage from "../../images/HexagonImage";
+import ClockIcon from "../../../assets/images/map/icon_clock.svg";
 import { Ionicons } from "@expo/vector-icons";
 import PropTypes from "prop-types";
+import MakeBidButton from "../../buttons/MakeBidButton";
 
 export default function BottomMapCard(props) {
-  const { isVisible, source, title, details, time, distance } = props;
+  const { isVisible, item } = props;
+  const { uri, title, details, time, distance } = item || {};
   if (!isVisible) return null;
+  const onReadMorePress = () => {
+    props.onReadMorePress(item);
+  };
+  const onMakeBidPress = () => {
+    props.onMakeBidPress(item);
+  };
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -19,7 +27,7 @@ export default function BottomMapCard(props) {
           style={{
             top: Layout.window.width * -0.2,
           }}
-          source={source}
+          source={{ uri }}
         />
       </View>
       <View style={styles.topIconsContainer}>
@@ -64,14 +72,12 @@ export default function BottomMapCard(props) {
         <StyledText
           bold
           touchable
+          onPress={onReadMorePress}
           style={styles.readMoreButton}
           children={"READ MORE"}
           color={Colors.lightColor}
         />
-        <TouchableOpacity style={styles.makeBidButton}>
-          <Ionicons name="md-arrow-back" size={24} color={Colors.white} />
-          <StyledText bold children={"Make a bid"} color={Colors.white} />
-        </TouchableOpacity>
+        <MakeBidButton onPress={onMakeBidPress} />
       </View>
     </View>
   );
@@ -83,6 +89,8 @@ BottomMapCard.propTypes = {
   details: PropTypes.string,
   time: PropTypes.string,
   date: PropTypes.string,
+  onReadMorePress: PropTypes.func,
+  onMakeBidPress: PropTypes.func,
 };
 BottomMapCard.defaultProps = {
   isVisible: false,
@@ -90,6 +98,8 @@ BottomMapCard.defaultProps = {
   details: "",
   time: "",
   distance: "",
+  onReadMorePress: () => {},
+  onMakeBidPress: () => {},
 };
 const styles = StyleSheet.create({
   container: {
@@ -146,16 +156,5 @@ const styles = StyleSheet.create({
   readMoreButton: {
     paddingVertical: Layout.padding.normal,
     paddingHorizontal: Layout.padding.large,
-  },
-  makeBidButton: {
-    flexDirection: "row",
-    backgroundColor: Colors.primaryColor,
-    borderRadius: 24,
-    height: 48,
-    borderTopRightRadius: 0,
-    borderBottomRightRadius: 0,
-    justifyContent: "space-evenly",
-    alignItems: "center",
-    width: "50%",
   },
 });

@@ -12,14 +12,14 @@ export default function HexagonImage({ style, size, source, ...rest }) {
       {...rest}
     >
       <Defs>
-        <Pattern id={"img"} patternUnits="objectBoundingBox">
+        <Pattern id={"img"} patternUnits="userSpaceOnUse">
           <Image
             height={144}
             width={157.14}
             preserveAspectRatio="none"
             href={source}
             x={0}
-            y={3}
+            y={0}
           />
         </Pattern>
       </Defs>
