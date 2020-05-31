@@ -4,11 +4,12 @@ import {
   StyleSheet,
   View,
   TouchableOpacity,
-  ViewPropTypes
+  ViewPropTypes,
 } from "react-native";
 import { Colors, Layout, Fonts, Styles } from "../../constants";
 import StyledText from "../../components/StyledText";
-import BackIcon from "../../assets/images/icon_back.svg";
+import BackIcon from "../icons/BackIcon";
+// import BackIcon from "../../assets/images/icon_back.svg";
 export default function HeaderView(props) {
   const {
     LeftIcon = () => null,
@@ -20,11 +21,23 @@ export default function HeaderView(props) {
     bold,
     style,
     leftButtonStyle,
-    rightButtonStyle
+    rightButtonStyle,
+    color,
   } = props;
-  const RenderLeftIcon = useCallback(() => {
-    return back ? <BackIcon width={28} height={28} /> : <LeftIcon />;
-  }, [back]);
+  const RenderLeftIcon = useCallback(
+    ({ color, onPress }) => {
+      return back ? (
+        <BackIcon
+          containerStyle={{ padding: 0 }}
+          onPress={onPress}
+          color={color}
+        />
+      ) : (
+        <LeftIcon />
+      );
+    },
+    [back]
+  );
   return (
     <View style={[styles.container, style]}>
       <View style={{ flex: 0.2 }}>
@@ -32,14 +45,14 @@ export default function HeaderView(props) {
           style={[styles.leftButton, leftButtonStyle]}
           onPress={onLeftPress}
         >
-          <RenderLeftIcon />
+          <RenderLeftIcon onPress={onLeftPress} color={color} />
         </TouchableOpacity>
       </View>
       <View style={styles.titleContainer}>
         <StyledText
           style={[
             styles.title,
-            { fontFamily: bold ? Fonts.type.bold : Fonts.type.medium }
+            { fontFamily: bold ? Fonts.type.bold : Fonts.type.medium, color },
           ]}
           children={title}
         />
@@ -61,48 +74,51 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginHorizontal: "5%",
-    paddingVertical: Layout.padding.tiny
+    paddingVertical: Layout.padding.tiny,
+    alignItems: "center",
   },
   leftButton: {
     padding: Layout.padding.tiny,
     justifyContent: "center",
-    alignSelf: "flex-start"
+    alignSelf: "flex-start",
   },
   titleContainer: { flex: 0.6 },
   title: {
     textAlign: "center",
     color: Colors.white,
-    fontFamily: Fonts.type.medium
+    fontFamily: Fonts.type.medium,
   },
   rightButton: {
     padding: Layout.padding.tiny,
     alignSelf: "flex-end",
-    justifyContent: "center"
-  }
+    justifyContent: "center",
+  },
 });
 
 HeaderView.propTypes = {
   back: PropTypes.oneOf([true, false, undefined]),
   bold: PropTypes.oneOf([true, false, undefined]),
   title: PropTypes.string,
+  color: PropTypes.string,
   style: ViewPropTypes.style,
   leftButtonStyle: ViewPropTypes.style,
   rightButtonStyle: ViewPropTypes.style,
   LeftIcon: PropTypes.func,
   RightIcon: PropTypes.func,
   onLeftPress: PropTypes.func,
-  onRightPress: PropTypes.func
+  onRightPress: PropTypes.func,
 };
 
 HeaderView.defaultProps = {
   back: true,
   bold: false,
   title: "",
+  color: Colors.white,
   style: {},
   leftButtonStyle: {},
   rightButtonStyle: {},
   LeftIcon: () => null,
   RightButton: () => null,
   onLeftPress: () => {},
-  onRightPress: () => {}
+  onRightPress: () => {},
 };
